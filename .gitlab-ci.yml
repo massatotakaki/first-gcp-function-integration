@@ -1,0 +1,6 @@
+deploy to gcloud:
+  image: google/cloud-sdk:latest
+  script:
+    - gcloud auth activate-service-account --key-file=./gcloud-service-key.json
+    - gcloud config set project YOUR_GCP_PROJECT
+    - gcloud functions deploy helloCI --runtime nodejs8 --trigger-http --allow-unauthenticated
